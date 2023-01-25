@@ -67,6 +67,7 @@ class AlienInvasion:
             self._create_fleet()
             self.ship.center_ship()
             pygame.mouse.set_visible(False)
+            self.settings.initialize_dynamic_settings()
 
 
     def _check_keyup_events(self, event):
@@ -117,6 +118,7 @@ class AlienInvasion:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
 
     def _update_aliens(self):
