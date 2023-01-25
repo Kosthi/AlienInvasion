@@ -21,6 +21,7 @@ class AlienInvasion:
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         self.rect = self.screen.get_rect()
+        # 窗口与全屏之间切换
         # self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         # self.settings.screen_height = self.screen.get_rect().height
         # self.settings.screen_width = self.screen.get_rect().width
@@ -40,7 +41,8 @@ class AlienInvasion:
         self.explosion_sound = pygame.mixer.Sound('./audio/explosion.mp3')
         pygame.mixer.music.load('./audio/battle.wav')
 
-        # 显示标题
+        # 显示图标和标题
+        pygame.display.set_icon(pygame.image.load('./images/icon.png'))
         pygame.display.set_caption('Alien Invasion')
 
     def run_game(self):
