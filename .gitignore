@@ -4,3 +4,4 @@ package.json
 .ipynb_checkpoints
 .DS_Store
 .idea
+high_score.json

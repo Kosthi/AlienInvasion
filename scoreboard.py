@@ -47,6 +47,7 @@ class Scoreboard:
         """将等级转化为一幅渲染的图像"""
         level_str = 'LEVEL ' + '{:,}'.format(self.stats.level)
         self.level_image = self.font.render(level_str, True, self.text_color, self.settings.bg_color)
+
         # 在屏幕右上角显示得分
         self.level_rect = self.level_image.get_rect()
         self.level_rect.right = self.score_rect.right
