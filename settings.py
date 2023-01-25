@@ -7,7 +7,7 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (230, 230, 230)
         # 飞船设置
-        self.ship_limit = 3
+        self.ship_limit = 1
         # 子弹设置
         self.bullet_width = 3
         self.bullet_height = 15
