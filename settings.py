@@ -19,9 +19,8 @@ class Settings:
         self.speedup_scale = 2
         # 提高分数
         self.score_scale = 1.5
-
+        # 初始化动态设置
         self.initialize_dynamic_settings()
-
 
     def initialize_dynamic_settings(self):
         """初始化游戏的动态设置"""
@@ -31,7 +30,6 @@ class Settings:
         self.alien_score = 50
         # 1为右 -1为左
         self.fleet_direction = 1
-
 
     def increase_speed(self):
         """提高速度设置"""

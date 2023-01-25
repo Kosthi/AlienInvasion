@@ -17,7 +17,6 @@ class Scoreboard:
         self.prep_high_score()
         self.prep_level()
 
-
     def prep_score(self):
         """将得分转化为一幅渲染的图像"""
         rounded_score = round(self.stats.score, -1)
@@ -47,13 +46,11 @@ class Scoreboard:
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.score_rect.bottom + 10
 
-
     def check_high_score(self):
         """更新最高分"""
         if self.stats.score >= self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()
-
 
     def show_score(self):
         """显示得分板"""

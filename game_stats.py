@@ -9,7 +9,6 @@ class GameStats:
         self.high_score = 0
         self.level = 1
 
-
     def reset_stats(self):
         """重置统计信息"""
         self.ship_left = self.settings.ship_limit

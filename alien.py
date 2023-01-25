@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """表示单个外星人的类"""
     def __init__(self, ai_game):
@@ -12,11 +13,11 @@ class Alien(Sprite):
         # 加载外星人图形并设置其rect属性
         self.image = pygame.image.load('./images/alien.bmp')
         self.rect = self.image.get_rect()
-        
+
         # 每个外星人最初出现在左上角附近
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
-        
+
         # 存储外星人精确水平位置
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)

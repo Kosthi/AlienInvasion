@@ -1,7 +1,8 @@
 import pygame
 
-class Button:
 
+class Button:
+    """管理按钮的类"""
     def __init__(self, ai_game, msg):
         """初始化按钮的属性"""
         self.screen = ai_game.screen
