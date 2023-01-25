@@ -9,6 +9,7 @@ from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 
 class AlienInvasion:
     """管理游戏资源和文件的类"""
@@ -27,6 +28,7 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
         self.play_button = Button(self, 'Play')
+        self.sb = Scoreboard(self)
         pygame.display.set_caption('Alien Invasion')
 
 
@@ -59,6 +61,8 @@ class AlienInvasion:
         """玩家单击Play按钮后开始游戏"""
         if self.play_button.rect.collidepoint(mouse_pos) and not self.stats.game_active:
             self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
             self.stats.game_active = True
 
             self.aliens.empty()
@@ -77,7 +81,7 @@ class AlienInvasion:
         elif event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
 
-            
+
     def _check_keydown_events(self, event):
         """响应松开"""
         if event.key == pygame.K_LEFT:
@@ -113,12 +117,20 @@ class AlienInvasion:
     def _check_bullet_alien_collisions(self):
         """处理碰撞"""
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        if collisions:
+            # 每个外星人只会被一颗子弹击中
+            for aliens_list in collisions.values():
+                self.stats.score += len(aliens_list) * self.settings.alien_score
+                self.sb.prep_score()
+                self.sb.check_high_score()
 
         # 消灭后创建新的外星人舰队
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+            self.stats.level += 1
+            self.sb.prep_level()
 
 
     def _update_aliens(self):
@@ -217,6 +229,7 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         self.aliens.draw(self.screen)
+        self.sb.show_score()
         if self.stats.game_active:
             for bullet in self.bullets.sprites():
                 bullet.draw_bullet()
@@ -228,3 +241,4 @@ class AlienInvasion:
 if __name__ == '__main__':
     ai = AlienInvasion()
     ai.run_game()
+    

@@ -6,8 +6,12 @@ class GameStats:
         self.reset_stats()
         # 游戏启动时处于活跃模式
         self.game_active = False
+        self.high_score = 0
+        self.level = 1
 
 
     def reset_stats(self):
         """重置统计信息"""
         self.ship_left = self.settings.ship_limit
+        self.score = 0
+        self.level = 1
